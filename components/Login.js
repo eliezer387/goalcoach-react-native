@@ -11,9 +11,10 @@ import { StackNavigator } from 'react-navigation';
 import styles from '../assets/styles';
 
 class Login extends Component {
-    static navigationOptions = {
-        title: 'Login',
+    static navigationOptions =({navigation})=> {
+        title: 'Login'
     };
+
     constructor(props) {
         super(props);
         this.state = {
@@ -25,10 +26,13 @@ class Login extends Component {
         };
     }
 
-    logIn() {
+    logIn(navigate) {
         const {email, password} = this.state;
         firebaseApp.auth().signInWithEmailAndPassword(email, password)
-            .then(() => ToastAndroid.show('usuario logueado',ToastAndroid.SHORT))
+            .then(() =>{
+                ToastAndroid.show('usuario logueado',ToastAndroid.SHORT);
+                navigate('Main');
+            })
             .catch(error => {
                 ToastAndroid.show('usuario o clave incorrecto',ToastAndroid.LONG);
                 this.setState({
@@ -62,7 +66,7 @@ class Login extends Component {
             />
             <Button
                 title="submit"
-                onPress={() => this.logIn()}
+                onPress={() => this.logIn(navigate)}
             >
             </Button>
             <Text>

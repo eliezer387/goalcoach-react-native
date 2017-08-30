@@ -3,6 +3,7 @@ import {View, AppRegistry, Button, Text} from 'react-native';
 import {StackNavigator} from 'react-navigation';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
+import Main from './components/Main';
 import styles from './assets/styles';
 
 export default class SimpleApp extends Component {
@@ -25,7 +26,8 @@ export default class SimpleApp extends Component {
 const AwesomeProject = StackNavigator({
     Home: {screen: SimpleApp},
     SignUp: {screen: SignUp},
-    Login: {screen: Login}
+    Login: {screen: Login},
+    Main :{screen: Main}
 });
 
 AppRegistry.registerComponent('AwesomeProject', () => AwesomeProject);
