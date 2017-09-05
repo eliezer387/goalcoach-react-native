@@ -1,30 +1,32 @@
-import  React, {Component} from 'react';
-import {View, Text, TextInput, Button} from 'react-native';
-import styles from '../assets/styles';
+import React, { Component } from "react";
+import { View, Text, TextInput, Button } from "react-native";
+import { goalRef } from "../api/firebase";
+import styles from "../assets/styles";
 
 class Main extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            title: ''
-        }
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: ""
+    };
+  }
 
-    render() {
-        return (
-            <View sytle={styles.container}>
-                <Text>
-                    Goals
-                </Text>
+  addGoal() {
+    const { title } = this.state;
+    const email = "pe.eliezer@gmail.com";
+    goalRef.push({ email, title });
+  }
 
-                    <TextInput>
-                    </TextInput>
-                    <Button title="addGoal">
-                    </Button>
+  render() {
+    return (
+      <View sytle={styles.container}>
+        <Text>Goals</Text>
 
-            </View>
-        )
-    }
+        <TextInput onChangeText={title => this.setState({ title })} />
+        <Button title="addGoal" onPress={() => this.addGoal()} />
+      </View>
+    );
+  }
 }
 
 export default Main;
