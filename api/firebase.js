@@ -2,7 +2,7 @@ import * as firebase from 'firebase';
 
 
 const config = {
-    apiKey: "",
+    apiKey: process.env.FIREBASE_API_KEY,
     authDomain: "goalcoach-333bb.firebaseapp.com",
     databaseURL: "https://goalcoach-333bb.firebaseio.com",
     projectId: "goalcoach-333bb",
